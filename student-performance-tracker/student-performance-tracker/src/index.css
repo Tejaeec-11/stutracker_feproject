@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Base ---------- */
+@layer base {
+  body {
+    @apply bg-slate-950 text-white antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+/* ---------- Reusable ocean-themed building blocks ---------- */
+@layer components {
+  /* Gradient button with a soft cyan glow on hover */
+  .btn-ocean {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-5 py-2.5 font-semibold text-slate-950 transition duration-200 hover:brightness-110 hover:shadow-[0_0_22px_rgba(34,211,238,0.65)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Glass-style form controls (input, select) */
+  .input-ocean {
+    @apply w-full rounded-xl border border-white/20 bg-white/10 px-4 py-2.5 text-white placeholder:text-cyan-200/50 transition focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/60 disabled:cursor-not-allowed disabled:opacity-40;
+    color-scheme: dark; /* dark date-picker / dropdown chrome */
+  }
+  .input-ocean option {
+    background-color: #0f172a;
+    color: #ffffff;
+  }
+}
+
+/* ---------- Animated waves at the bottom of the page ---------- */
+@keyframes wave-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.wave-layer {
+  animation-name: wave-slide;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .wave-layer {
+    animation: none;
+  }
+}
